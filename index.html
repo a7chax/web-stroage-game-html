@@ -243,7 +243,6 @@
   })
 
   function checkAnswer(userGuess){
-    console.log('checkAnswer')
     const answer = sessionStorage.getItem(sessionAnswerKey);
     if(userGuess === answer){
       duringGameDisplay.setAttribute('hidden', true);
@@ -251,9 +250,10 @@
       sessionTrueAnswerField.innerText = answer
       updateScore()
     }else{
+      console.log('fail')
       const previousAttemptAmout = parseInt(sessionStorage.getItem(sessionUserAttemptsKey));
       sessionStorage.setItem(sessionUserAttemptsKey, previousAttemptAmout + 1);
-      sessionUserAnswerField.innerText = sessionStorage.getItem(sessionUserAttemptsKey);
+      sessionUserAttemptsField.innerText = sessionStorage.getItem(sessionUserAttemptsKey);
       sessionUserAnswerField.innerText = '';
       sessionUserWrongAnswerField.innerText  = userGuess
     }
